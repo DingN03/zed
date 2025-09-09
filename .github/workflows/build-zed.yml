@@ -16,10 +16,12 @@ jobs:
       run: |
         rustup update
         rustup target add wasm32-wasip1
-
-    - name: Build Zed Editor
+    - name: Setting Zed Editor Env
       run: |
         New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" ` -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+        
+    - name: Build Zed Editor
+      run: |
         cd zed
         cargo build --release
 
